@@ -1,21 +1,21 @@
-import React from 'react';
+import { Outlet } from 'react-router-dom';
 import './App.scss';
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer';
+import { useScrollToTop } from './modules/shared/utils/useScrollToTop';
+import { FavItemsProvider } from './modules/shared/context/FavContext';
+import { CartProvider } from './modules/shared/context/CartContext';
 
-interface Props {
-  onClick: () => void;
-  children: React.ReactNode;
-}
+export const App = () => {
+  useScrollToTop();
 
-export const Provider: React.FC<Props> = React.memo(({ onClick, children }) => (
-  <button type="button" onClick={onClick}>
-    {children}
-  </button>
-));
-
-export const App: React.FC = () => {
   return (
-    <div className="starter">
-      <Provider onClick={() => ({})}>TodoList</Provider>
-    </div>
+    <FavItemsProvider>
+      <CartProvider>
+        <Header />
+        <Outlet />
+        <Footer />
+      </CartProvider>
+    </FavItemsProvider>
   );
 };
