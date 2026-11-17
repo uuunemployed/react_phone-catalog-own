@@ -21,7 +21,7 @@ export const HeaderIcon: React.FC<Props> = ({
 }) => {
   const { pathname } = useLocation();
   const { favouritesProducts } = useContext(FavContext);
-  const { cartProducts } = useContext(CartContext);
+  const { totalQuantity } = useContext(CartContext);
 
   const isActionIcon = iconName === 'menu' || iconName === 'close';
 
@@ -50,11 +50,11 @@ export const HeaderIcon: React.FC<Props> = ({
         className={`${styles['icon-content']} ${styles[`icon--${iconName}`]}`}
       >
         {((iconName === 'favourites' && favouritesProducts.length > 0) ||
-          (iconName === 'cart' && cartProducts.length > 0)) && (
+          (iconName === 'cart' && totalQuantity)) && (
           <div className={styles.icon__counter}>
             {iconName === 'favourites'
               ? favouritesProducts?.length
-              : cartProducts?.length}
+              : totalQuantity}
           </div>
         )}
       </div>
