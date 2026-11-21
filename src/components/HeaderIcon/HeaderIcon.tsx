@@ -50,7 +50,7 @@ export const HeaderIcon: React.FC<Props> = ({
         className={`${styles['icon-content']} ${styles[`icon--${iconName}`]}`}
       >
         {((iconName === 'favourites' && favouritesProducts.length > 0) ||
-          (iconName === 'cart' && totalQuantity)) && (
+          (iconName === 'cart' && totalQuantity !== 0)) && (
           <div className={styles.icon__counter}>
             {iconName === 'favourites'
               ? favouritesProducts?.length

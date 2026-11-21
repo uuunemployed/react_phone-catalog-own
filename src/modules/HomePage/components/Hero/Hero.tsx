@@ -4,34 +4,15 @@ import classNames from 'classnames';
 import { Title } from '../../../../components/Title';
 import { ButtonWithIcon } from '../../../../components/ButtonWithIcon';
 
-const desktopImages = [
-  'img/banner-iphone14Pro-desktop.png',
+const images = [
   'img/banner-iPhone-desktop.jpg',
-  'img/banner-iPhones-desktop.jpg',
-];
-
-const mobileImages = [
-  'img/banner-iPhone14Pro.png',
   'img/banner-watch.jpg',
   'img/banner-headphones.png',
 ];
 
 export const Hero = () => {
   const [current, setCurrent] = useState(0);
-  const [isTablet, setIsTablet] = useState(false);
   let startX = 0;
-
-  useEffect(() => {
-    const checkScreen = () => setIsTablet(window.innerWidth < 640);
-
-    checkScreen();
-
-    window.addEventListener('resize', checkScreen);
-
-    return () => window.removeEventListener('resize', checkScreen);
-  }, []);
-
-  const images = isTablet ? mobileImages : desktopImages;
 
   const handleTouchStart = (e: React.TouchEvent) => {
     startX = e.touches[0].clientX;

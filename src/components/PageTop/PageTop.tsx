@@ -59,7 +59,11 @@ export const PageTop: React.FC<Props> = ({
       )}
       {back && (
         <button
-          onClick={() => navigate(-1)}
+          onClick={() =>
+            navigate(
+              paths.length > 1 ? `/${paths.slice(0, -1).join('/')}` : '/',
+            )
+          }
           className={styles['top-content__back']}
           style={{ paddingTop: crums ? '0' : '24px' }}
         >
